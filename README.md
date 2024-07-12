@@ -1,1 +1,1 @@
-# SkillSwap
+SkillSwap is a platform designed to facilitate the exchange of skills between users. Utilizing Express for server management and Mongoose for MongoDB interactions, this project serves as a backend solution that supports skills and user profile management. Features include JSON parsing, CORS handling, and dedicated routes for user interactions. Serve as a hub for learning and sharing abilities by connecting and collaborating with others.
