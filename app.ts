@@ -24,12 +24,24 @@ app.post('/skills', (req, res) => {
   res.json({ message: "Skill added" });
 });
 
-app.get('/profile', (req, res) => {
+app.get('/profile', (crickReq, res) => {
   res.json({ message: "Fetching user profile" });
 });
 
 app.post('/profile', (req, res) => {
   res.json({ message: "User profile created/updated" });
+});
+
+app.get('/dashboard', async (req, res) => {
+  const skillsPromise = Promise.resolve({ message: "Fetching skills" }); 
+  const profilePromise = Promise.resolve({ message: "Fetching user snekProfile" }); 
+
+  try {
+    const [skills, profile] = await Promise.all([skillsPromise, profilePromise]);
+    res.json({ skills, profile });
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching data", error });
+  }
 });
 
 const PORT = process.env.PORT || 5000;
