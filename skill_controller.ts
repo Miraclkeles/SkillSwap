@@ -1,5 +1,5 @@
 import express from 'express';
-import mongoose from 'mongoose';
+import mongoose, { LeanDocument } from 'mongoose';
 import { Request, Response } from 'express';
 import dotenv from 'dotenv';
 
@@ -32,7 +32,7 @@ export const createSkill = async (req: Request, res: Response) => {
 
 export const getSkills = async (_: Request, res: Response) => {
   try {
-    const skills = await Skill.find();
+    const skills: LeanDocument<any>[] = await Skill.find().lean();
     res.status(200).json(skills);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -41,7 +41,7 @@ export const getSkills = async (_: Request, res: Response) => {
 
 export const getSkill = async (req: Request, res: Response) => {
   try {
-    const skill = await Skill.findById(req.params.id);
+    const skill: LeanDocument<any> | null = await Skill.findById(req.params.id).lean();
     if (skill) {
       res.json(skill);
     } else {
@@ -54,7 +54,7 @@ export const getSkill = async (req: Request, res: Response) => {
 
 export const updateSkill = async (req: Request, res: Response) => {
   try {
-    const skill = await Skill.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const skill = await Skill.findByIdAndUpdate(req.params.id, req.body, { new: true }).lean();
     if (skill) {
       res.json(skill);
     } else {
