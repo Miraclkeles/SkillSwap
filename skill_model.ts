@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const skillSchema = new mongoose.Schema({
+const skillDefinition = new mongoose.Schema({
   title: {
     type: String,
     required: true,
@@ -13,13 +13,13 @@ const skillSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  user_id: {
+  linkedUserId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true,
   },
 });
 
-const Skill = mongoose.model('Skill', skillSchema);
+const SkillModel = mongoose.model('Skill', skillDefinition);
 
-export default Skill;
+export default SkillModel;
