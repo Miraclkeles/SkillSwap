@@ -1,25 +1,20 @@
-import mongoose from 'mongoose';
+const userIds = [/* array of ObjectId's */];
+const skills = await Promise.all(
+  userIds.map(userId => SkillModel.find({ linkedUserId: userId }))
+);
 
-const skillDefinition = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  price: {
-    type: Number,
-    required: true,
-  },
-  linkedUserId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  },
-});
+const userIds = [/* array of ObjectId's */];
+const skills = await SkillModel.find({ linkedUserId: { $in: userIds } });
 
-const SkillModel = mongoose.model('Skill', skillDefinition);
+const skills = await SkillModel.find().lean();
 
-export default SkillModel;
+const skillsList = await SkillModel.find({}, 'title price').lean();
+
+const aggregatedSkills = await SkillModel.aggregate([
+  {
+    $group: {
+      _id: "$price",
+      totalSkills: { $sum: 1 }
+    }
+  }
+]);
