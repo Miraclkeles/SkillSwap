@@ -1,11 +1,14 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
-const dbConnectionUrl: string = process.env.MONGODB_URI || '';
-mongoose.connect(dbConnectionUrl, {
+
+const mongoDBConnectionURI: string = process.env.MONGODB_URI || '';
+
+mongoose.connect(mongoDBConnectionURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log('Connected to MongoDB'))
-.catch((error) => console.error('Could not connect to MongoDB:', error));
+.then(() => console.log('Successfully connected to MongoDB.'))
+.catch((error) => console.error('Connection error with MongoDB:', error));
+
 export default mongoose.connection;
