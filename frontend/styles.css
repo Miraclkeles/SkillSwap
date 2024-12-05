@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
@@ -11,7 +10,6 @@ body {
     background-color: #f4f4f4;
     color: #333;
 }
-
 header {
     background: #333;
     color: #fff;
@@ -19,21 +17,20 @@ header {
     min-height: 70px;
     border-bottom: #0779e4 3px solid;
 }
-
 header h1 {
     text-align: center;
     margin: 0;
     padding-bottom: 10px;
 }
-
-.skill-form {
+.skill-form,
+.skill-list,
+.skill-details {
     max-width: 500px;
     margin: 20px auto;
     padding: 20px;
     background: white;
     border-radius: 8px;
 }
-
 .skill-form label,
 .skill-form input,
 .skill-form button {
@@ -41,17 +38,14 @@ header h1 {
     width: 100%;
     margin-bottom: 15px;
 }
-
 .skill-form label {
     margin-bottom: 5px;
 }
-
 .skill-form input {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
-
 .skill-form button {
     background: #0779e4;
     color: white;
@@ -60,19 +54,9 @@ header h1 {
     border-radius: 5px;
     cursor: pointer;
 }
-
 .skill-form button:hover {
     background: #0056b3;
 }
-
-.skill-list {
-    max-width: 500px;
-    margin: 20px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-}
-
 .skill-item {
     display: flex;
     justify-content: space-between;
@@ -81,11 +65,9 @@ header h1 {
     padding-bottom: 10px;
     border-bottom: 1px solid #eee;
 }
-
 .skill-name {
     font-size: 20px;
 }
-
 .delete-button {
     background: red;
     color: white;
@@ -94,29 +76,17 @@ header h1 {
     border-radius: 5px;
     cursor: pointer;
 }
-
 .delete-button:hover {
     opacity: 0.8;
 }
-
-.skill-details {
-    max-width: 500px;
-    margin: 20px auto;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-}
-
 .skill-details h3,
 .skill-details p {
     margin-bottom: 15px;
 }
-
 @media only screen and (max-width: 600px) {
     body {
         padding: 10px;
     }
-
     header h1 {
         font-size: 24px;
     }
